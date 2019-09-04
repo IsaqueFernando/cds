@@ -6,7 +6,7 @@ class Album(models.Model):
     quant_musicas = models.IntegerField() # Quantidade de músicas por cd.
     ano = models.IntegerField()
     tempo_duracao = models.DurationField() # A inteção é utilizar a duração das músicas e somá-las para obter o tempo total de duração.
-
+    
     def __str__(self):
         return self.nome
 

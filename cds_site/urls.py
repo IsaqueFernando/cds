@@ -16,6 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+admin.site.site_header = 'Albuns' # Modificando o nome da página admin.
+
 urlpatterns = [
+    path('', admin.site.urls), # Evitar o carregamento da página padrão do django e já direcionar para o admin.
     path('admin/', admin.site.urls),
 ]

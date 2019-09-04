@@ -14,7 +14,7 @@ def export_as_csv_action(description="Exportar o objeto como um arquivo CSV", fi
             excludeset = set(exclude)
             field_names = field_names - excludeset
 
-        response = HttpResponse(content_type='text/csv')
+        response = HttpResponse(content_type='text/csv') # Tipo de resposta que iremos retornar.
         response['Content-Disposition'] = 'attachment; filename=%s.csv' % str(opts).replace('.', '_')
 
         writer = csv.writer(response)
@@ -22,9 +22,9 @@ def export_as_csv_action(description="Exportar o objeto como um arquivo CSV", fi
         if header:
             writer.writerow(list(field_names))
         for obj in queryset:
-            writer.writerow([str(getattr(obj, field)) for field in field_names])
+            writer.writerow([str(getattr(obj, field)) for field in field_names]) # Escrevendo as linhas no arquivo csv.
 
         return response
 
     export_as_csv.short_description = description
-    return export_as_csv
+    return export_as_csv # Retornamos uma callback padrão que verifica as entradas para gerar o csv.
